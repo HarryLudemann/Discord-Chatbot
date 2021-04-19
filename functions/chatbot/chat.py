@@ -62,3 +62,12 @@ def chatbot_response(msg):
     ints = predict_class(msg, model)
     res = getResponse(ints, intents)
     return res
+
+if (__name__ == "__main__"):
+    while True:
+        UserInput = input('you: ')
+        if (UserInput == 'q'):
+            break
+        else:
+            response = chatbot_response(UserInput)
+            print('bot: ' + response)

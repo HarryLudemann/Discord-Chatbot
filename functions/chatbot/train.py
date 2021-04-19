@@ -95,3 +95,7 @@ def trainModel():
   model.save('chatbot_model.h5', hist)
 
   print("model created")
+
+
+if (__name__ == "__main__"):
+    trainModel()

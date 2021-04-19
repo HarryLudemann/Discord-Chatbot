@@ -7,3 +7,6 @@ def get_quote():
   json_data = json.loads(response.text)
   quote = json_data[0]['q'] + " -" + json_data[0]['a']
   return(quote)
+
+if (__name__ == "__main__"):
+  get_quote()
