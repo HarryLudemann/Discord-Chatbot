@@ -1,8 +1,6 @@
 # Import Modules
 import discord
 from discord.ext import commands
-# Custom Modules
-import functions #shows error dont remove / discord.py initializes this file apart of main bot.py, so imports are acting from bot.py
 
 class Basic(commands.Cog):
 
@@ -17,19 +15,21 @@ class Basic(commands.Cog):
 Hazzahs Discord Bot
 
 Basic:
-  help     Shows this message
-  ping     Ping Bot
+  help                Shows this message
+  ping                Ping Bot
 
 Fun:
-  comeback Returns Foass Comeback
-  inspire  Returns Inspirational Quote
+  cat                 Returns Random Cat
+  dog                 Returns Random Dog
+  comeback {Target}   Returns Random Comeback
+  inspire             Returns Inspirational Quote
 
 Ai_Chat_Bot:
   chat     Talk To Chat Bot
        ``` ''')
 
     # Ping Commands
-    @commands.command()
+    @commands.command(name='ping', help='Test Bot Is Active')
     async def ping(self, ctx):
         await ctx.send('Pong')
 

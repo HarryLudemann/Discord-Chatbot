@@ -6,6 +6,7 @@ from decouple import config #Get .env Varible
 # Custom Modules
 import functions
 
+# Bots Description
 description = "Hazzahs Discord Bot"
 # Initialize client
 client = commands.Bot(command_prefix=functions.GetConfigValue('identifier'), case_insensitive=True, description=description, help_command=None)

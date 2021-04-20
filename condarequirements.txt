@@ -2,14 +2,18 @@
 # $ conda create --name <env> --file <this file>
 # platform: win-64
 absl-py=0.12.0=pypi_0
+aiodns=2.0.0=pypi_0
 aiohttp=3.7.4.post0=pypi_0
 astunparse=1.6.3=pypi_0
 async-timeout=3.0.1=pypi_0
 attrs=20.3.0=pypi_0
 autopep8=1.5.6=pypi_0
+brotlipy=0.7.0=pypi_0
 cached-property=1.5.2=pypi_0
 cachetools=4.2.1=pypi_0
+cchardet=2.1.7=pypi_0
 certifi=2020.6.20=py36_0
+cffi=1.14.5=pypi_0
 chardet=4.0.0=pypi_0
 click=7.1.2=py_0
 configparser=5.0.2=pypi_0
@@ -43,7 +47,9 @@ pip=21.0.1=py36haa95532_0
 protobuf=3.15.8=pypi_0
 pyasn1=0.4.8=pypi_0
 pyasn1-modules=0.2.8=pypi_0
+pycares=3.1.1=pypi_0
 pycodestyle=2.7.0=pypi_0
+pycparser=2.20=pypi_0
 python=3.6.13=h3758d61_0
 python-dateutil=2.8.1=pypi_0
 python-decouple=3.4=pypi_0
@@ -62,6 +68,7 @@ tensorflow=2.4.1=pypi_0
 tensorflow-estimator=2.4.0=pypi_0
 termcolor=1.1.0=pypi_0
 tqdm=4.60.0=pypi_0
+typing=3.7.4.3=pypi_0
 typing-extensions=3.7.4.3=pypi_0
 urllib3=1.26.4=pypi_0
 vc=14.2=h21ff451_1
