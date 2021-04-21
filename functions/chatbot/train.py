@@ -17,7 +17,7 @@ def trainModel():
   classes = []
   documents = []
   ignore_words = ['?', '!']
-  data_file = open('intents.json').read()
+  data_file = open('functions/chatbot/resources/intents.json').read()
   intents = json.loads(data_file)
 
 
@@ -46,8 +46,8 @@ def trainModel():
   print (len(words), "unique lemmatized words", words)
 
 
-  pickle.dump(words,open('words.pkl','wb'))
-  pickle.dump(classes,open('classes.pkl','wb'))
+  pickle.dump(words,open('functions/chatbot/resources/learninglog/words.pkl','wb'))
+  pickle.dump(classes,open('functions/chatbot/resources/learninglog/classes.pkl','wb'))
 
   # initializing training data
   training = []
@@ -92,7 +92,7 @@ def trainModel():
 
   #fitting and saving the model
   hist = model.fit(np.array(train_x), np.array(train_y), epochs=1000, batch_size=5, verbose=1)
-  model.save('chatbot_model.h5', hist)
+  model.save('functions/chatbot/resources/learninglog/chatbot_model.h5', hist)
 
   print("model created")
 

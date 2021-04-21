@@ -1,43 +1,119 @@
-{"intents": [
-        {"tag": "greeting",
-         "patterns": ["Hi", "Is anyone there?", "Hello"],
-         "responses": ["hello", "hello can you hear me"],
-         "context_set": ""
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hi",
+                "Is anyone there?",
+                "Hello"
+            ],
+            "responses": [
+                "hello",
+                "hello can you hear me",
+                "yep",
+                "yo"
+            ],
+            "context_set": ""
         },
-        {"tag": "helpme",
-         "patterns": ["how can i help you today", "is there a problem with your computer?"],
-         "responses": ["my computer has some sort of virus", "my computer keeps saying that i have a virus and to call this number"],
-         "context_set": ""
+        {
+            "tag": "helpme",
+            "patterns": [
+                "how can i help you today",
+                "is there a problem with your computer?"
+            ],
+            "responses": [
+                "my computer has some sort of virus",
+                "my computer keeps saying that i have a virus and to call this number",
+                "no",
+                "virus"
+            ],
+            "context_set": ""
         },
-        {"tag": "name",
-         "patterns": ["what is your name", "what should I call you", "whats your name?"],
-         "responses": ["You can call me hazzah.", "ahh im hazzah"],
-         "context_set": ""
+        {
+            "tag": "name",
+            "patterns": [
+                "what is your name",
+                "what should I call you",
+                "whats your name?"
+            ],
+            "responses": [
+                "You can call me hazzah.",
+                "ahh im hazzah",
+                "haz",
+                "haz"
+            ],
+            "context_set": ""
         },
-        {"tag": "purchasedgiftcard",
-         "patterns": ["have you purchased the giftcard", "have you purchased the card", "giftcard"],
-         "responses": ["yes i have already purchased the card", "I have the cards"],
-         "context_set": ""
+        {
+            "tag": "purchasedgiftcard",
+            "patterns": [
+                "have you purchased the giftcard",
+                "have you purchased the card",
+                "giftcard"
+            ],
+            "responses": [
+                "yes i have already purchased the card",
+                "I have the cards",
+                "yep",
+                "yup"
+            ],
+            "context_set": ""
         },
-        {"tag": "whatgiftcard",
-         "patterns": ["what kind of card is it", "what company giftcard", "what sort of giftcard is it"],
-         "responses": ["it says a google play store", "is it a google card"], 
-         "context_set": ""
+        {
+            "tag": "whatgiftcard",
+            "patterns": [
+                "what kind of card is it",
+                "what company giftcard",
+                "what sort of giftcard is it"
+            ],
+            "responses": [
+                "it says a google play store",
+                "is it a google card",
+                "google",
+                "test"
+            ],
+            "context_set": ""
         },
-        {"tag": "sure",
-         "patterns": ["are you sure", "are you positive", "are you certain"],
-         "responses": ["yes im sure"],
-         "context_set": ""
+        {
+            "tag": "sure",
+            "patterns": [
+                "are you sure",
+                "are you positive",
+                "are you certain"
+            ],
+            "responses": [
+                "yes im sure",
+                "yep",
+                "certain"
+            ],
+            "context_set": ""
         },
-        {"tag": "windowskey",
-         "patterns": ["can you see the windows icon in the bottom left of your keyboard?", "can you press the windows key", "can you press the flag shape button in the bottom left of keyboard"],
-         "responses": ["yes sure"],
-         "context_set": ""
+        {
+            "tag": "windowskey",
+            "patterns": [
+                "can you see the windows icon in the bottom left of your keyboard?",
+                "can you press the windows key",
+                "can you press the flag shape button in the bottom left of keyboard"
+            ],
+            "responses": [
+                "yes sure",
+                "sure",
+                "ok"
+            ],
+            "context_set": ""
         },
-        {"tag": "rkey",
-         "patterns": ["while you press the windows key press the r key aswell", "press the r and windows key"],
-         "responses": ["okay, it has opened a window in the bottom left corner "],
-         "context_set": ""
+        {
+            "tag": "rkey",
+            "patterns": [
+                "while you press the windows key press the r key aswell",
+                "press the r and windows key"
+            ],
+            "responses": [
+                "okay, it has opened a window in the bottom left corner ",
+                "okay",
+                "ok"
+            ],
+            "context_set": ""
         }
-   ]
+    ]
 }
