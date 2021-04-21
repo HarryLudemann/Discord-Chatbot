@@ -1,4 +1,4 @@
-# Hazzahs Discord-Bot
+# Simple Discord-Bot
 
 ## **Features:**
 1.  **Basic**
@@ -23,7 +23,7 @@
 ```
 python3 -m venv env
 source env/bin/activate
-pip install -r requirements.txt
+pip install -r piprequirements.txt
 ```
 ###### **Conda**:
 ```

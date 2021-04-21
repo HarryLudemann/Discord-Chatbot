@@ -1,6 +1,8 @@
 # Import Modules
 import discord
 from discord.ext import commands
+# Custom Modules
+import functions
 
 class Basic(commands.Cog):
 
@@ -33,6 +35,7 @@ Ai_Chat_Bot:
 
     # Ping Commands
     @commands.command(name='ping', help='Test Bot Is Active')
+    @commands.has_any_role(functions.GetConfigValue('basic-ping', 'PRIVILEGES'))
     async def ping(self, ctx):
         await ctx.send('Pong')
 

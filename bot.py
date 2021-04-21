@@ -9,7 +9,7 @@ import functions
 # Bots Description
 description = "Hazzahs Discord Bot"
 # Initialize client
-client = commands.Bot(command_prefix=functions.GetConfigValue('identifier'), case_insensitive=True, description=description, help_command=None)
+client = commands.Bot(command_prefix=functions.GetConfigValue('identifier', 'MAIN'), case_insensitive=True, description=description, help_command=None)
 # Get Discord Token From .env file
 DiscordBotToken = config('DiscordBotToken')
 # Load All Categorys in cogs folder

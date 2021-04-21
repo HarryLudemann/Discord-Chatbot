@@ -8,6 +8,8 @@ import aiohttp
 import asyncio
 # Official Api Packages
 from foaas import fuck
+# Custom Modules
+import functions
 
 class Fun(commands.Cog):
     def __init__(self, client):
@@ -16,6 +18,7 @@ class Fun(commands.Cog):
     # Commands
     # Returns Inspirational Qoute
     @commands.command(name='inspire', help='Returns Inspirational Quote')
+    @commands.has_any_role(functions.GetConfigValue('fun-inspire', 'PRIVILEGES'))
     async def inspire(self, ctx):
         response = requests.get("https://zenquotes.io/api/random")
         json_data = json.loads(response.text)
@@ -24,11 +27,13 @@ class Fun(commands.Cog):
 
     # Returns Foaas comeback
     @commands.command(name='comeback', help='Returns Foass Comeback')
+    @commands.has_any_role(functions.GetConfigValue('fun-comeback', 'PRIVILEGES'))
     async def comeback(self, ctx, target):
         response = fuck.random(name=target, from_= str(ctx.message.author)).text
         await ctx.send(response)
 
     @commands.command(pass_context=True)
+    @commands.has_any_role(functions.GetConfigValue('fun-cat', 'PRIVILEGES'))
     async def cat(self, ctx):
         """(c) random cat picture"""
         print('cat')
@@ -45,6 +50,7 @@ class Fun(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command(pass_context=True)
+    @commands.has_any_role(functions.GetConfigValue('fun-dog', 'PRIVILEGES'))
     async def dog(self, ctx):
         """(d) random dog picture"""
         print('dog')

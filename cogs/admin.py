@@ -1,6 +1,8 @@
 # Import Modules
 import discord
 from discord.ext import commands
+# Custom Modules
+import functions
 
 class Basic(commands.Cog):
 
@@ -10,7 +12,7 @@ class Basic(commands.Cog):
     #Commands
     # Admin Command Stop Bot
     @commands.command(name='q', help='Stop Bot')
-    @commands.has_any_role("Admin")
+    @commands.has_any_role(functions.GetConfigValue('admin-quit', 'PRIVILEGES'))
     async def q(self, ctx):
         await exit()
 

@@ -14,12 +14,14 @@ class Ai_Chat_Bot(commands.Cog):
     #Commands
     # Asks Ai Questions
     @commands.command(name='chat', help='Talk To Chat Bot')
+    @commands.has_any_role(functions.GetConfigValue('chatbot-chat', 'PRIVILEGES'))
     async def chat(self, ctx, *message):
         response = functions.chatbot.chatbot_response(' '.join(message))
         await ctx.send(response)
 
     # Asks every questions and stores responses
     @commands.command(name='train', help='Train Bot By Answering Questions')
+    @commands.has_any_role(functions.GetConfigValue('chatbot-train', 'PRIVILEGES'))
     async def train(self, ctx):
         await ctx.send('Reply to Questions:') 
         # Get Intents
@@ -61,6 +63,7 @@ class Ai_Chat_Bot(commands.Cog):
 
     # Add Question
     @commands.command(name='addquestion', help='Add Question To Bot')
+    @commands.has_any_role(functions.GetConfigValue('chatbot-askquestion', 'PRIVILEGES'))
     async def addquestion(self, ctx):
         tag = ''
         question = ''
@@ -121,6 +124,7 @@ class Ai_Chat_Bot(commands.Cog):
             
     # List Current Intents
     @commands.command(name='intents', help='Add Question To Bot')
+    @commands.has_any_role(functions.GetConfigValue('chatbot-listintents', 'PRIVILEGES'))
     async def intents(self, ctx):
         # Get Intents
         with open('./functions/chatbot/resources/intents.json') as json_file:
