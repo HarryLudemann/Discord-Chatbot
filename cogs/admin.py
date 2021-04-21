@@ -10,7 +10,7 @@ class Basic(commands.Cog):
     #Commands
     # Admin Command Stop Bot
     @commands.command(name='q', help='Stop Bot')
-    @commands.has_any_role("Admin", "Mod")
+    @commands.has_any_role("Admin")
     async def q(self, ctx):
         await exit()
 
