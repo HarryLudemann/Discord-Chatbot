@@ -11,6 +11,8 @@
 3.  **Ai ChatBot**
     * Chat {Message} - Send Ai Message
 	* Train - Add Responses To All Excisting Questions
+	* Addquestion - Add To Intents
+	* Intents - List All Intents
 4.  **Uncategorised**
   	* New Member Welcome Message
 5.  **Admin**

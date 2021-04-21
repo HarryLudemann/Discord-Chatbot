@@ -59,6 +59,76 @@ class Ai_Chat_Bot(commands.Cog):
         print('Added Training Data')
         await ctx.send('Added Training Data') 
 
+    # Add Question
+    @commands.command(name='addquestion', help='Add Question To Bot')
+    async def addquestion(self, ctx):
+        tag = ''
+        question = ''
+        response = ''
+        # Get Tag
+        await ctx.send('Tag: ') 
+        #Get response
+        try:
+            msg = await self.client.wait_for("message", timeout=60, check=lambda message: message.author == ctx.author and message.channel == ctx.channel)
+            if msg: tag = msg.content
+                #await ctx.send(msg.content)
+        except asyncio.TimeoutError:
+            await ctx.send("Cancelling due to timeout", delete_after=10)
+
+        # Get Question
+        await ctx.send('Question: ') 
+        #Get response
+        try:
+            msg = await self.client.wait_for("message", timeout=60, check=lambda message: message.author == ctx.author and message.channel == ctx.channel)
+            if msg: question = msg.content
+                #await ctx.send(msg.content)
+        except asyncio.TimeoutError:
+            await ctx.send("Cancelling due to timeout", delete_after=10)
+
+        # Get Response
+        await ctx.send('Response: ') 
+        #Get response
+        try:
+            msg = await self.client.wait_for("message", timeout=60, check=lambda message: message.author == ctx.author and message.channel == ctx.channel)
+            if msg: response = msg.content
+                #await ctx.send(msg.content)
+        except asyncio.TimeoutError:
+            await ctx.send("Cancelling due to timeout", delete_after=10)
+
+        # Get Intents
+        with open('./functions/chatbot/resources/intents.json') as json_file:
+            data = json.load(json_file)
+
+        # Check if tag is duplicate
+        duplicate = False
+        for i in data['intents']:
+            if i['tag'] == tag:
+                duplicate = True
+
+        if duplicate:
+            await ctx.send('```Failed: Duplicate Tag Retry```') 
+        else:
+            # Create Object
+            data['intents'].append({
+                "tag": tag,
+                "patterns": question,
+                "responses": response,
+                "context_set": ''
+            })
+            with open("./functions/chatbot/resources/intents.json",'w') as f:
+                json.dump(data, f, indent=4)
+            await ctx.send('Added To Intents') 
+            
+    # List Current Intents
+    @commands.command(name='intents', help='Add Question To Bot')
+    async def intents(self, ctx):
+        # Get Intents
+        with open('./functions/chatbot/resources/intents.json') as json_file:
+            data = json.load(json_file)
+
+        for i in data['intents']:
+            embed = discord.Embed( title=str('Tag: ' + str(i['tag']) + ' Question/s: ' + str(i['patterns']) + ' Response/s: ' + str(i['responses'])))
+            await ctx.send(embed=embed) 
 
 def setup(client):
     client.add_cog(Ai_Chat_Bot(client))

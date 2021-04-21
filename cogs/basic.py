@@ -25,7 +25,10 @@ Fun:
   inspire             Returns Inspirational Quote
 
 Ai_Chat_Bot:
-  chat     Talk To Chat Bot
+  chat                Talk To Chat Bot
+  train               Add Responses To AI Model
+  addquestion         Add Question To Intents
+  intents             List All Intents
        ``` ''')
 
     # Ping Commands
