@@ -10,7 +10,7 @@ class Basic(commands.Cog):
         self.client = client
 
     # Permission Checkers
-    #q Command
+    #q command permissions 
     def check_q_permission(ctx): #Shows Error / Dont Remove
         role = discord.utils.get(ctx.guild.roles, name=str(functions.GetConfigValue('admin-quit', str(ctx.guild.id))))
         if role in ctx.author.roles:

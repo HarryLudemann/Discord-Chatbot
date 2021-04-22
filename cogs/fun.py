@@ -78,9 +78,9 @@ class Fun(commands.Cog):
         isVideo = True
         while isVideo:
             async with aiohttp.ClientSession() as cs:
-                async with cs.get('https://random.dog/woof.json') as r:
+                async with cs.get('https://dog.ceo/api/breeds/image/random') as r:
                     res = await r.json()
-                    res = res['url']
+                    res = res['message']
                     await cs.close()
             if res.endswith('.mp4'):
                 pass
