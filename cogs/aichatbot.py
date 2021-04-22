@@ -11,17 +11,40 @@ class Ai_Chat_Bot(commands.Cog):
     def __init__(self, client):
         self.client = client
 
+    # Permission Checkers
+    # chat command
+    def check_chat_permission(ctx): #Shows Error / Dont Remove
+        role = discord.utils.get(ctx.guild.roles, name=str(functions.GetConfigValue('chatbot-chat', str(ctx.guild.id))))
+        if role in ctx.author.roles:
+            return True
+    # ask command
+    def check_ask_permission(ctx): #Shows Error / Dont Remove
+        role = discord.utils.get(ctx.guild.roles, name=str(functions.GetConfigValue('chatbot-train', str(ctx.guild.id))))
+        if role in ctx.author.roles:
+            return True
+    # addquestion command
+    def check_addquestion_permission(ctx): #Shows Error / Dont Remove
+        role = discord.utils.get(ctx.guild.roles, name=str(functions.GetConfigValue('chatbot-addquestion', str(ctx.guild.id))))
+        if role in ctx.author.roles:
+            return True
+    # listintents command
+    def check_listintents_permission(ctx): #Shows Error / Dont Remove
+        role = discord.utils.get(ctx.guild.roles, name=str(functions.GetConfigValue('chatbot-listintents', str(ctx.guild.id))))
+        if role in ctx.author.roles:
+            return True
+
+
     #Commands
     # Asks Ai Questions
     @commands.command(name='chat', help='Talk To Chat Bot')
-    @commands.has_any_role(functions.GetConfigValue('chatbot-chat', 'PRIVILEGES'))
+    @commands.check(check_chat_permission)
     async def chat(self, ctx, *message):
         response = functions.chatbot.chatbot_response(' '.join(message))
         await ctx.send(response)
 
     # Asks every questions and stores responses
     @commands.command(name='train', help='Train Bot By Answering Questions')
-    @commands.has_any_role(functions.GetConfigValue('chatbot-train', 'PRIVILEGES'))
+    @commands.check(check_ask_permission)
     async def train(self, ctx):
         await ctx.send('Reply to Questions:') 
         # Get Intents
@@ -63,7 +86,7 @@ class Ai_Chat_Bot(commands.Cog):
 
     # Add Question
     @commands.command(name='addquestion', help='Add Question To Bot')
-    @commands.has_any_role(functions.GetConfigValue('chatbot-askquestion', 'PRIVILEGES'))
+    @commands.check(check_addquestion_permission)
     async def addquestion(self, ctx):
         tag = ''
         question = ''
@@ -124,7 +147,7 @@ class Ai_Chat_Bot(commands.Cog):
             
     # List Current Intents
     @commands.command(name='intents', help='Add Question To Bot')
-    @commands.has_any_role(functions.GetConfigValue('chatbot-listintents', 'PRIVILEGES'))
+    @commands.check(check_listintents_permission)
     async def intents(self, ctx):
         # Get Intents
         with open('./functions/chatbot/resources/intents.json') as json_file:

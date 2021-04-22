@@ -9,13 +9,20 @@ class Basic(commands.Cog):
     def __init__(self, client):
         self.client = client
 
+    # Permission Checkers
+    #q Command
+    def check_q_permission(ctx): #Shows Error / Dont Remove
+        role = discord.utils.get(ctx.guild.roles, name=str(functions.GetConfigValue('admin-quit', str(ctx.guild.id))))
+        if role in ctx.author.roles:
+            return True
+
+
     #Commands
-    # Admin Command Stop Bot
-    @commands.command(name='q', help='Stop Bot')
-    @commands.has_any_role(functions.GetConfigValue('admin-quit', 'PRIVILEGES'))
+    # Stop Bot
+    @commands.command(name='q', help='Stop Bot', pass_context = True)
+    @commands.check(check_q_permission)
     async def q(self, ctx):
         await exit()
-
 
 def setup(client):
     client.add_cog(Basic(client))

@@ -8,6 +8,12 @@ class Basic(commands.Cog):
 
     def __init__(self, client):
         self.client = client
+    # Permission Checkers
+    # chat command
+    def check_ping_permission(ctx): #Shows Error / Dont Remove
+        role = discord.utils.get(ctx.guild.roles, name=str(functions.GetConfigValue('basic-ping', str(ctx.guild.id))))
+        if role in ctx.author.roles:
+            return True
 
     #Commands
     # Help Command
@@ -35,22 +41,14 @@ Ai_Chat_Bot:
 
     # Ping Commands
     @commands.command(name='ping', help='Test Bot Is Active')
-    @commands.has_any_role(functions.GetConfigValue('basic-ping', 'PRIVILEGES'))
+    @commands.check(check_ping_permission)
     async def ping(self, ctx):
         await ctx.send('Pong')
 
-        
-    #Events
-    # On Bot Successfully Connected
-    @commands.Cog.listener()
-    async def on_ready(self):
-        print('We have logged in as {0.user}'.format(self.client))
-
-    # On Member Join
-    @commands.Cog.listener()
-    async def on_member_join(self, member):
-        await member.create_dm()
-        await member.dm_channel.send( f'Hi {member.name}, welcome to my Discord server!' )
+    # Get Current Server Info
+    @commands.command(name='info', help='Server Info', pass_context = True)
+    async def info(self, gui):
+      await ctx.send(f'{ctx.author.name}, you are currently in {ctx.guild.name} ({ctx.guild.id}).')
 
 
 def setup(client):

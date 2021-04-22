@@ -15,10 +15,33 @@ class Fun(commands.Cog):
     def __init__(self, client):
         self.client = client
 
+    # Permission Checkers
+    # chat command
+    def check_inspire_permission(ctx): #Shows Error / Dont Remove
+        role = discord.utils.get(ctx.guild.roles, name=str(functions.GetConfigValue('fun-inspire', str(ctx.guild.id))))
+        if role in ctx.author.roles:
+            return True
+    # ask command
+    def check_cat_permission(ctx): #Shows Error / Dont Remove
+        role = discord.utils.get(ctx.guild.roles, name=str(functions.GetConfigValue('fun-cat', str(ctx.guild.id))))
+        if role in ctx.author.roles:
+            return True
+    # addquestion command
+    def check_dog_permission(ctx): #Shows Error / Dont Remove
+        role = discord.utils.get(ctx.guild.roles, name=str(functions.GetConfigValue('fun-dog', str(ctx.guild.id))))
+        if role in ctx.author.roles:
+            return True
+    # listintents command
+    def check_comeback_permission(ctx): #Shows Error / Dont Remove
+        role = discord.utils.get(ctx.guild.roles, name=str(functions.GetConfigValue('fun-comeback', str(ctx.guild.id))))
+        if role in ctx.author.roles:
+            return True
+
+
     # Commands
     # Returns Inspirational Qoute
     @commands.command(name='inspire', help='Returns Inspirational Quote')
-    @commands.has_any_role(functions.GetConfigValue('fun-inspire', 'PRIVILEGES'))
+    @commands.check(check_inspire_permission)
     async def inspire(self, ctx):
         response = requests.get("https://zenquotes.io/api/random")
         json_data = json.loads(response.text)
@@ -27,16 +50,14 @@ class Fun(commands.Cog):
 
     # Returns Foaas comeback
     @commands.command(name='comeback', help='Returns Foass Comeback')
-    @commands.has_any_role(functions.GetConfigValue('fun-comeback', 'PRIVILEGES'))
+    @commands.check(check_comeback_permission)
     async def comeback(self, ctx, target):
         response = fuck.random(name=target, from_= str(ctx.message.author)).text
         await ctx.send(response)
 
     @commands.command(pass_context=True)
-    @commands.has_any_role(functions.GetConfigValue('fun-cat', 'PRIVILEGES'))
+    @commands.check(check_cat_permission)
     async def cat(self, ctx):
-        """(c) random cat picture"""
-        print('cat')
         async with aiohttp.ClientSession() as cs:
             async with cs.get('https://aws.random.cat/meow') as r:
                 res = await r.json()
@@ -50,7 +71,7 @@ class Fun(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command(pass_context=True)
-    @commands.has_any_role(functions.GetConfigValue('fun-dog', 'PRIVILEGES'))
+    @commands.check(check_dog_permission)
     async def dog(self, ctx):
         """(d) random dog picture"""
         print('dog')

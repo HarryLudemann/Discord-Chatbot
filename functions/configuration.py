@@ -2,45 +2,46 @@
 from configparser import ConfigParser
 
 # Create Config File
-def CreateConfigFile():
+def CreateConfigFile(GuildID):
     #Get the configparser object
     config_object = ConfigParser()
-    #Assume we need 2 sections in the config file, let's call them USERINFO and SERVERCONFIG
-    config_object["MAIN"] = {
-        "identifier": "$"
-    }
-    config_object["PRIVILEGES"] = {
-        "fun-inspire": "@everyone",
-        "fun-comeback": "@everyone",
-        "fun-cat": "@everyone",
-        "fun-dog": "@everyone",
-        "basic-ping": "@everyone",
-        "admin-quit": "Admin",
-        "chatbot-chat": "@everyone",
-        "chatbot-train": "@everyone",
-        "chatbot-askquestion": "@everyone",
-        "chatbot-listintents": "@everyone"
 
-    }
+    # parse existing file
+    config_object.read('config.ini')
+
+    # add a new section and some values
+    config_object.add_section(GuildID)
+    config_object.set(GuildID, 'identifier', '$')
+    config_object.set(GuildID, 'fun-inspire', '@everyone')
+    config_object.set(GuildID, 'fun-comeback', '@everyone')
+    config_object.set(GuildID, 'fun-cat', '@everyone')
+    config_object.set(GuildID, 'fun-dog', '@everyone')
+    config_object.set(GuildID, 'basic-ping', '@everyone')
+    config_object.set(GuildID, 'admin-quit', 'Admin')
+    config_object.set(GuildID, 'chatbot-chat', '@everyone')
+    config_object.set(GuildID, 'chatbot-train', '@everyone')
+    config_object.set(GuildID, 'chatbot-askquestion', '@everyone')
+    config_object.set(GuildID, 'chatbot-listintents', '@everyone')
+
     #Write the above sections to config.ini file
     with open('config.ini', 'w') as conf:
         config_object.write(conf)
 
 # Get Saved Config Value
-def GetConfigValue(Value, Section):
+def GetConfigValue(Value, GuildID):
     #Read config.ini file
     config_object = ConfigParser()
     config_object.read("config.ini")
     #Create Object Of ServerSettings
-    ServerSettings = config_object[Section]
+    ServerSettings = config_object[GuildID]
     return ServerSettings[Value]
 
 # Set Config Value to file
-def SetConfigValue(Value, NewValue, Section):
+def SetConfigValue(Value, NewValue, GuildID):
     config_object = ConfigParser()
     config_object.read("config.ini")
     #Create Object Of ServerSettings
-    ServerSettings = config_object[Section]
+    ServerSettings = config_object[GuildID]
     #Update the value
     ServerSettings[Value] = NewValue
     #Write changes back to file
@@ -48,4 +49,4 @@ def SetConfigValue(Value, NewValue, Section):
         config_object.write(conf)
 
 if (__name__ == "__main__"):
-    CreateConfigFile()
+    CreateConfigFile('677326100686438430') # GuildID For HAX00R
