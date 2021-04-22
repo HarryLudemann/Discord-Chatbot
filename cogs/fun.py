@@ -16,24 +16,29 @@ class Fun(commands.Cog):
         self.client = client
 
     # Permission Checkers
-    # chat command
+    # inspire command
     def check_inspire_permission(ctx): #Shows Error / Dont Remove
         role = discord.utils.get(ctx.guild.roles, name=str(functions.GetConfigValue('fun-inspire', str(ctx.guild.id))))
         if role in ctx.author.roles:
             return True
-    # ask command
+    # cat command
     def check_cat_permission(ctx): #Shows Error / Dont Remove
         role = discord.utils.get(ctx.guild.roles, name=str(functions.GetConfigValue('fun-cat', str(ctx.guild.id))))
         if role in ctx.author.roles:
             return True
-    # addquestion command
+    # dog command
     def check_dog_permission(ctx): #Shows Error / Dont Remove
         role = discord.utils.get(ctx.guild.roles, name=str(functions.GetConfigValue('fun-dog', str(ctx.guild.id))))
         if role in ctx.author.roles:
             return True
-    # listintents command
+    # comeback command
     def check_comeback_permission(ctx): #Shows Error / Dont Remove
         role = discord.utils.get(ctx.guild.roles, name=str(functions.GetConfigValue('fun-comeback', str(ctx.guild.id))))
+        if role in ctx.author.roles:
+            return True
+    # listintents command
+    def check_fox_permission(ctx): #Shows Error / Dont Remove
+        role = discord.utils.get(ctx.guild.roles, name=str(functions.GetConfigValue('fun-fox', str(ctx.guild.id))))
         if role in ctx.author.roles:
             return True
 
@@ -55,6 +60,7 @@ class Fun(commands.Cog):
         response = fuck.random(name=target, from_= str(ctx.message.author)).text
         await ctx.send(response)
 
+    # Cat Command
     @commands.command(pass_context=True)
     @commands.check(check_cat_permission)
     async def cat(self, ctx):
@@ -70,11 +76,29 @@ class Fun(commands.Cog):
         embed.set_image(url=res['file'])     
         await ctx.send(embed=embed)
 
+    # Fox Command
+    @commands.command(pass_context=True)
+    @commands.check(check_fox_permission)
+    async def fox(self, ctx):
+        """(f) random fox picture"""
+        async with aiohttp.ClientSession() as cs:
+            async with cs.get('https://randomfox.ca/floof/') as r:
+                res = await r.json()
+                res = res['image']
+                await cs.close()
+        embed = discord.Embed(
+            title = 'Fox 🦊',
+            description = 'Fox :star_struck:',
+            colour = discord.Colour.purple()
+            )
+        embed.set_image(url=res)  
+        await ctx.send(embed=embed)
+
+    # Dog Command
     @commands.command(pass_context=True)
     @commands.check(check_dog_permission)
     async def dog(self, ctx):
         """(d) random dog picture"""
-        print('dog')
         isVideo = True
         while isVideo:
             async with aiohttp.ClientSession() as cs:
