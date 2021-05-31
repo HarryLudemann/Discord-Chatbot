@@ -1,6 +1,6 @@
 # Discord-Chatbot
 This bot allows muiltple servers to be connected, customizable permissions for all commands and is in python 3.8.2 to support most hosting website like repl.it. This bot also uses TensorFlow, Keras and nltk for a AI chat bot and is accessable in discord through a set off commands, to train to bot you run the train.py script in functions/chatbot/train.py. 
-
+Dependancies to large for heroku free tier
 ## **Features:**
 1.  **Basic**
   	* Ping - Ping Bot
