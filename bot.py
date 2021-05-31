@@ -15,7 +15,7 @@ description = "Hazzahs Bot"
 # Initialize client
 client = commands.Bot(command_prefix= get_prefix, case_insensitive=True, description=description, help_command=None)
 # Get Discord Token From .env file
-DiscordBotToken = config('DiscordBotToken')
+DiscordBotToken = os.getenv("DiscordBotToken")
 
 # Load All Categorys in cogs folder
 for filename in os.listdir('./cogs'):
