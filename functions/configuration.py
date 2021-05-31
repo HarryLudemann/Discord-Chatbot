@@ -20,6 +20,7 @@ def CreateConfigFile(GuildID):
     config_object.set(GuildID, 'basic-ping', '@everyone')
     config_object.set(GuildID, 'admin-quit', 'Admin')
     config_object.set(GuildID, 'admin-changeprefix', 'Admin')
+    config_object.set(GuildID, 'admin-test', 'Admin')
     config_object.set(GuildID, 'chatbot-chat', '@everyone')
     config_object.set(GuildID, 'chatbot-train', '@everyone')
     config_object.set(GuildID, 'chatbot-askquestion', '@everyone')
