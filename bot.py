@@ -23,7 +23,7 @@ for filename in os.listdir('./cogs'):
     client.load_extension(f'cogs.{filename[:-3]}')
 #Get Discord Token From .env
 try:  
-   token = os.environ["DISCORD_Bot_TOKEN"]
+   token = os.environ["DISCORD_BOT_TOKEN"]
 except KeyError: 
    print ("Please set the environment variable FOO")
    sys.exit(1)
