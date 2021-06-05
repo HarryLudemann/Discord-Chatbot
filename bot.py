@@ -1,9 +1,9 @@
 # Import Modules
-import os # for loading cog files & .env
-import sys # for exiting if no .env excists
+import os # for loading cog files
 import discord
 from discord.ext import commands
 from discord.utils import get
+from decouple import config
 # Custom Modules
 import functions
 
@@ -21,12 +21,7 @@ client = commands.Bot(command_prefix= get_prefix, case_insensitive=True, descrip
 for filename in os.listdir('./cogs'):
   if filename.endswith('.py'):
     client.load_extension(f'cogs.{filename[:-3]}')
-#Get Discord Token From .env
-try:  
-   token = os.environ["DISCORD_BOT_TOKEN"]
-except KeyError: 
-   print ("Please set the environment variable FOO")
-   sys.exit(1)
-
+#Get Discord Token From .envpip
+token = config("DISCORD_BOT_TOKEN")
 # Run Bot
 client.run(token)
