@@ -1,5 +1,3 @@
-<h2 style="color: #EED202;">!!! Repo Archived Check Out <a href="https://github.com/HarryLudemann/Django-Discord">Django-Discord</a> !!!</h2>
-
 # Discord-Chatbot
 Bot allows muiltple servers with customizable permissions using python 3.9.4 and is heroku ready. The dependencies are 80mb to large to fit slug size of free heroku tier as TensorFlow, Keras and nltk for a the chat bot is to large.
 
